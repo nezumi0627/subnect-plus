@@ -17,6 +17,7 @@ main (安定版)
 ## 開発フロー
 
 1. 新機能の開発を始める場合：
+
 ```bash
 # developブランチから最新をプル
 git checkout develop
@@ -27,6 +28,7 @@ git checkout -b feature/機能名
 ```
 
 2. 開発が完了したら：
+
 ```bash
 # 変更をコミット
 git add .
@@ -38,6 +40,7 @@ git merge feature/機能名
 ```
 
 3. リリース準備：
+
 ```bash
 # developブランチからmainにマージ
 git checkout main
@@ -62,12 +65,14 @@ git tag -a v1.0.0 -m "バージョン1.0.0"
 ## 初期セットアップ手順
 
 1. リポジトリのクローン：
+
 ```bash
 git clone https://github.com/nezumi0627/subnect-plus.git
 cd subnect-plus
 ```
 
 2. ブランチのセットアップ：
+
 ```bash
 # mainブランチの作成
 git branch -M main
@@ -80,9 +85,10 @@ git checkout -b feature/initial-setup
 ```
 
 3. リモートへのプッシュ：
+
 ```bash
 git remote add origin https://github.com/nezumi0627/subnect-plus.git
 git push -u origin main
 git push -u origin develop
 git push -u origin feature/initial-setup
-``` 
+```

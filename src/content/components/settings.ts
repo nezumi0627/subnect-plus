@@ -42,7 +42,7 @@ export class SettingsComponent {
       e.preventDefault();
       this.showSettings();
     });
-    
+
     settingsMenu.appendChild(plusSettings);
     this.settingsLinkAdded = true;
   }
@@ -52,7 +52,7 @@ export class SettingsComponent {
 
     const settingsContent = document.querySelector('#subnect-plus-settings-content');
     const settingsMenu = DOMUtils.findSettingsMenu();
-    
+
     if (settingsContent) {
       const container = DOMUtils.findSettingsContainer();
       if (container && settingsMenu) {
@@ -132,4 +132,4 @@ export class SettingsComponent {
   setSettingsLinkAdded(value: boolean): void {
     this.settingsLinkAdded = value;
   }
-} 
+}

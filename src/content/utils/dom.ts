@@ -27,4 +27,4 @@ export class DOMUtils {
       subtree: true,
     });
   }
-} 
+}
