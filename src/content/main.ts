@@ -38,15 +38,15 @@ class SubnectPlus {
     setTimeout(checkSettingsPage, 500);
 
     globalThis.addEventListener('popstate', () => setTimeout(checkSettingsPage, 100));
-    
+
     const originalPushState = history.pushState.bind(history);
-    history.pushState = function(data: unknown, unused: string, url?: string | URL): void {
+    history.pushState = function (data: unknown, unused: string, url?: string | URL): void {
       originalPushState(data, unused, url);
       setTimeout(checkSettingsPage, 100);
     };
 
     const originalReplaceState = history.replaceState.bind(history);
-    history.replaceState = function(data: unknown, unused: string, url?: string | URL): void {
+    history.replaceState = function (data: unknown, unused: string, url?: string | URL): void {
       originalReplaceState(data, unused, url);
       setTimeout(checkSettingsPage, 100);
     };
@@ -98,4 +98,4 @@ class SubnectPlus {
 }
 
 // Initialize the extension
-new SubnectPlus(); 
+new SubnectPlus();

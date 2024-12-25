@@ -27,6 +27,6 @@
     }
   },
   "tasks": {
-    "build": "deno bundle src/content/main.ts dist/content/main.js && deno bundle src/background/main.ts dist/background/main.js"
+    "build": "deno compile --output dist/background.js src/background/main.ts"
   }
-} 
+}
