@@ -28,10 +28,11 @@ jobs:
         if: github.event_name == 'issues'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
         run: |
           if [ "${{ github.event.action }}" = "opened" ]; then
             # バグ報告の場合
-            if echo "${{ github.event.issue.body }}" | grep -i "bug\|error\|問題\|バグ" > /dev/null; then
+            if echo "${ISSUE_BODY}" | grep -i "bug\|error\|問題\|バグ" > /dev/null; then
               gh issue edit "${{ github.event.issue.number }}" --add-label "bug"
               gh issue comment "${{ github.event.issue.number }}" --body "バグ報告ありがとうございます！🐛
               
@@ -43,7 +44,7 @@ jobs:
               できるだけ早く対応いたします。"
             
             # 機能要望の場合
-            elif echo "${{ github.event.issue.body }}" | grep -i "feature\|enhancement\|要望\|機能" > /dev/null; then
+            elif echo "${ISSUE_BODY}" | grep -i "feature\|enhancement\|要望\|機能" > /dev/null; then
               gh issue edit "${{ github.event.issue.number }}" --add-label "enhancement"
               gh issue comment "${{ github.event.issue.number }}" --body "機能要望ありがとうございます！💡
               
@@ -58,11 +59,13 @@ jobs:
               内容を確認次第、適切なラベルを付与し、対応を開始いたします。
               追加の情報が必要な場合は、お知らせいたしますので、よろしくお願いいたします。"
             fi
+          fi
 
       - name: Process PR Events
         if: github.event_name == 'pull_request'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
         run: |
           if [ "${{ github.event.action }}" = "opened" ] || [ "${{ github.event.action }}" = "ready_for_review" ]; then
             # PRのサイズに基づいてラベル付け
@@ -82,7 +85,7 @@ jobs:
             gh pr edit "${{ github.event.pull_request.number }}" --add-reviewer "nezumi0627"
 
             # PRの種類に基づいてコメント
-            if echo "${{ github.event.pull_request.title }}" | grep -i "fix\|bug" > /dev/null; then
+            if echo "${PR_TITLE}" | grep -i "fix\|bug" > /dev/null; then
               gh pr comment "${{ github.event.pull_request.number }}" --body "バグ修正のPRありがとうございます！🔧
               
               以下の点を確認させていただきます：
@@ -101,6 +104,7 @@ jobs:
               
               レビューを開始いたしますので、しばらくお待ちください。"
             fi
+          fi
 
       - name: Process Discussion Events
         if: github.event_name == 'discussion'
