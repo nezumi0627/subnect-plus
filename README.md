@@ -142,26 +142,8 @@ deno task build
   </style>
 
   <g>
-    <!-- Container with rounded corners -->
     <path class="container" d="M25 0H575C588.807 0 600 11.1929 600 25V175C600 188.807 588.807 200 575 200H25C11.1929 200 0 188.807 0 175V25C0 11.1929 11.1929 0 25 0Z"/>
     <path class="border" d="M25 1H575C588.807 1 599 11.1929 599 25V175C599 188.807 588.807 199 575 199H25C11.1929 199 1 188.807 1 175V25C1 11.1929 11.1929 1 25 1Z"/>
-    
-    <!-- Title -->
-    <text class="text label" x="300" y="50" text-anchor="middle">Contributors</text>
-
-    <!-- First Contributor -->
-    <g class="avatar-container">
-      <img src="https://avatars.githubusercontent.com/MocA-Love?size=160"/>
-      <circle class="avatar-circle" cx="200" cy="100" r="40"/>
-    </g>
-    <text class="text username" x="200" y="160" text-anchor="middle">@MocA-Love</text>
-
-    <!-- Second Contributor -->
-    <g class="avatar-container">
-      <img src="https://avatars.githubusercontent.com/akku1139?size=160"/>
-      <circle class="avatar-circle" cx="400" cy="100" r="40"/>
-    </g>
-    <text class="text username" x="400" y="160" text-anchor="middle">@akku1139</text>
   </g>
 </svg> 
 
