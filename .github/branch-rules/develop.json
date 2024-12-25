@@ -1,38 +1,23 @@
 {
-  "enforcement": "enabled",
-  "conditions": {
-    "ref_name": {
-      "exclude": [],
-      "include": ["refs/heads/develop"]
-    }
-  },
-  "rules": [
-    {
-      "type": "deletion"
+  "pattern": "develop",
+  "rules": {
+    "required_status_checks": {
+      "strict": true,
+      "contexts": [
+        "build",
+        "lint"
+      ]
     },
-    {
-      "type": "required_linear_history"
+    "required_pull_request_reviews": {
+      "required_approving_review_count": 1,
+      "dismiss_stale_reviews": true,
+      "required_review_thread_resolution": true
     },
-    {
-      "type": "pull_request",
-      "parameters": {
-        "required_approving_review_count": 1,
-        "dismiss_stale_reviews_on_push": true,
-        "required_review_thread_resolution": true,
-        "automatic_copilot_code_review_enabled": true,
-        "allowed_merge_methods": ["merge", "squash"]
-      }
-    },
-    {
-      "type": "required_status_checks",
-      "parameters": {
-        "strict_required_status_checks_policy": true,
-        "required_status_checks": [
-          "build",
-          "lint"
-        ]
-      }
-    }
-  ],
-  "bypass_actors": []
+    "enforce_admins": false,
+    "required_linear_history": true,
+    "allow_force_pushes": false,
+    "allow_deletions": false,
+    "required_conversation_resolution": true,
+    "block_creations": false
+  }
 } 

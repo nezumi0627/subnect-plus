@@ -1,21 +1,18 @@
 {
-  "enforcement": "enabled",
-  "conditions": {
-    "ref_name": {
-      "exclude": [],
-      "include": ["refs/heads/feature/*"]
-    }
-  },
-  "rules": [
-    {
-      "type": "required_status_checks",
-      "parameters": {
-        "strict_required_status_checks_policy": false,
-        "required_status_checks": [
-          "lint"
-        ]
-      }
-    }
-  ],
-  "bypass_actors": []
+  "pattern": "feature/*",
+  "rules": {
+    "required_status_checks": {
+      "strict": false,
+      "contexts": [
+        "lint"
+      ]
+    },
+    "required_pull_request_reviews": null,
+    "enforce_admins": false,
+    "required_linear_history": false,
+    "allow_force_pushes": true,
+    "allow_deletions": true,
+    "required_conversation_resolution": false,
+    "block_creations": false
+  }
 } 
