@@ -71,4 +71,4 @@ deno task build
 
 ## コントリビュータ
 
-![](https://github.com/MocA-Love.png?size=16)
+<img src="https://github.com/MocA-Love.png?size=16">
