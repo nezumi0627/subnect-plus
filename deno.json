@@ -27,6 +27,7 @@
     }
   },
   "tasks": {
-    "build": "deno compile --output dist/background.js src/background/main.ts"
+    "build": "deno run --allow-read --allow-write scripts/build.ts",
+    "dev": "deno run --watch --allow-read --allow-write scripts/build.ts"
   }
 }
