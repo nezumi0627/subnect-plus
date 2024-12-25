@@ -27,6 +27,6 @@
     }
   },
   "tasks": {
-    "build": "tsc --outDir dist src/content/main.ts"
+    "build": "deno compile --output dist/background.js src/background/main.ts"
   }
 }
