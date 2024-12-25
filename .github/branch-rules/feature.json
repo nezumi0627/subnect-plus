@@ -9,7 +9,8 @@
     "ref_name": {
       "exclude": [],
       "include": [
-        "refs/heads/feature/*"
+        "refs/heads/feature/*",
+        "refs/heads/release/*"
       ]
     }
   },
@@ -22,6 +23,7 @@
       "parameters": {
         "required_approving_review_count": 1,
         "dismiss_stale_reviews_on_push": true,
+        "require_code_owner_review": true,
         "required_review_thread_resolution": true,
         "allowed_merge_methods": [
           "squash"
@@ -39,6 +41,14 @@
           },
           {
             "context": "build",
+            "integration_id": null
+          },
+          {
+            "context": "test",
+            "integration_id": null
+          },
+          {
+            "context": "security",
             "integration_id": null
           }
         ]
