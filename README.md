@@ -73,6 +73,6 @@ deno task build
 
 <div align="center">
   <a href="https://github.com/nezumi0627/subnect-plus/graphs/contributors">
-    <iframe src=".github/assets/contributors.html" alt="Contributors" width="600" />
+    <iframe src=".github/assets/contributors.html" alt="Contributors" width="600></iframe>
   </a>
 </div>
