@@ -3,17 +3,13 @@
     "lib": ["dom", "dom.iterable", "dom.asynciterable", "deno.ns"]
   },
   "fmt": {
-    "files": {
-      "include": ["src/"],
-      "exclude": ["dist/"]
-    },
-    "options": {
-      "useTabs": false,
-      "lineWidth": 120,
-      "indentWidth": 2,
-      "singleQuote": true,
-      "proseWrap": "preserve"
-    }
+    "include": ["src/"],
+    "exclude": ["dist/"],
+    "useTabs": false,
+    "lineWidth": 120,
+    "indentWidth": 2,
+    "singleQuote": true,
+    "proseWrap": "preserve"
   },
   "lint": {
     "files": {
@@ -27,6 +23,11 @@
     }
   },
   "tasks": {
-    "build": "deno compile --output dist/background.js src/background/main.ts"
+    "clean": "rm -rf dist",
+    "make-dirs": "mkdir -p dist/content dist/background",
+    "build:content": "deno run --allow-read --allow-write --allow-env --allow-net --allow-run npm:esbuild src/content/main.ts --bundle --format=esm --outfile=dist/content/main.js --platform=browser --target=chrome58 --sourcemap",
+    "build:background": "deno run --allow-read --allow-write --allow-env --allow-net --allow-run npm:esbuild src/background/main.ts --bundle --format=esm --outfile=dist/background/main.js --platform=browser --target=chrome58 --sourcemap",
+    "copy:static": "cp manifest.json dist/ && cp -r icons dist/ && cp -r styles dist/",
+    "build": "deno task clean && deno task make-dirs && deno task build:content && deno task build:background && deno task copy:static"
   }
 }
