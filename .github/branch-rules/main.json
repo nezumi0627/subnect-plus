@@ -21,7 +21,6 @@
       "type": "non_fast_forward"
     },
     {
-<<<<<<< HEAD
       "type": "update"
     },
     {
@@ -75,9 +74,6 @@
           }
         ]
       }
-=======
-      "type": "required_linear_history"
->>>>>>> feature/update-build-system
     }
   ],
   "bypass_actors": []
