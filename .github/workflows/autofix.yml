@@ -29,12 +29,12 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          if [ -n "$(git status --porcelain)" ]; then
-            git config user.name "github-actions[bot]"
-            git config user.email "github-actions[bot]@users.noreply.github.com"
+          if [ -n '$(git status --porcelain)' ]; then
+            git config user.name 'github-actions[bot]'
+            git config user.email 'github-actions[bot]@users.noreply.github.com'
             git add -A
-            git commit -m "Auto fix"
+            git commit -m 'Auto fix'
             git push -u origin autofix-${{ github.sha }}
 
-            gh pr create --base ${{ github.ref_name }} --title "Auto fix" --body ""
+            gh pr create --base ${{ github.ref_name }} --title 'Auto fix' --body ''
           fi
