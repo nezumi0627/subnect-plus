@@ -1,0 +1,21 @@
+{
+  "enforcement": "enabled",
+  "conditions": {
+    "ref_name": {
+      "exclude": [],
+      "include": ["refs/heads/feature/*"]
+    }
+  },
+  "rules": [
+    {
+      "type": "required_status_checks",
+      "parameters": {
+        "strict_required_status_checks_policy": false,
+        "required_status_checks": [
+          "lint"
+        ]
+      }
+    }
+  ],
+  "bypass_actors": []
+} 
