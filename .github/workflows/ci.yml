@@ -2,20 +2,20 @@ name: CI
 
 on:
   push:
-    branches: [ main, develop, 'feature/*' ]
+    branches: [main, develop, 'feature/*']
   pull_request:
-    branches: [ main, develop ]
+    branches: [main, develop]
 
 jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup Deno
         uses: denoland/setup-deno@v1
         with:
-          deno-version: 1.38.5
+          deno-version: 2.1.4
 
       - name: Verify formatting
         run: deno fmt --check
@@ -27,14 +27,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup Deno
         uses: denoland/setup-deno@v1
         with:
-          deno-version: 1.38.5
-
-      - name: Cache dependencies
-        run: deno cache src/content/main.ts
+          deno-version: 2.1.4
 
       - name: Build
         run: deno task build
@@ -50,4 +47,4 @@ jobs:
           languages: typescript
 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v2 
+        uses: github/codeql-action/analyze@v2
