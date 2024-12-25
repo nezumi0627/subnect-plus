@@ -51,10 +51,12 @@ class SubnectPlus {
       setTimeout(checkSettingsPage, 100);
     };
 
-    document.addEventListener('click', (e: Event) => {
-      const target = (e.target as HTMLElement);
-      if (!target.closest('#subnect-plus-settings-content') && 
-          !target.closest('#subnect-plus-settings')) {
+    document.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+      if (
+        !target.closest('#subnect-plus-settings-content') &&
+        !target.closest('#subnect-plus-settings')
+      ) {
         this.settings.cleanupSettings();
       }
     });

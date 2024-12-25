@@ -1,4 +1,4 @@
-import { VERSION, AUTHOR, GITHUB_URL } from '../../constants/config.ts';
+import { AUTHOR, GITHUB_URL, VERSION } from '../../constants/config.ts';
 import { StorageService } from '../services/storage.ts';
 import { DOMUtils } from '../utils/dom.ts';
 import { LogoComponent } from './logo.ts';
