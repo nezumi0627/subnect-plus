@@ -72,3 +72,8 @@ deno task build
 ## コントリビュータ
 
 <img src="https://github.com/MocA-Love.png?size=160">
+
+<style>
+  img {
+    border-radius: 50%;
+</style>
