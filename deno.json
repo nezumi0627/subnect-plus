@@ -27,6 +27,11 @@
     }
   },
   "tasks": {
-    "build": "deno bundle src/content/main.ts dist/content/main.js && deno bundle src/background/main.ts dist/background/main.js"
+    "clean": "rm -rf dist",
+    "make-dirs": "mkdir -p dist/content dist/background",
+    "build:content": "deno run --allow-read --allow-write --allow-env --allow-net --allow-run npm:esbuild src/content/main.ts --bundle --format=esm --outfile=dist/content/main.js --platform=browser --target=chrome58 --sourcemap",
+    "build:background": "deno run --allow-read --allow-write --allow-env --allow-net --allow-run npm:esbuild src/background/main.ts --bundle --format=esm --outfile=dist/background/main.js --platform=browser --target=chrome58 --sourcemap",
+    "copy:static": "cp manifest.json dist/ && cp -r icons dist/ && cp -r styles dist/",
+    "build": "deno task clean && deno task make-dirs && deno task build:content && deno task build:background && deno task copy:static"
   }
-} 
+}

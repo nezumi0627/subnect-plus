@@ -11,4 +11,4 @@ export class StorageService {
   static async setSettings(settings: Settings): Promise<void> {
     await chrome.storage.sync.set(settings as unknown as Record<string, unknown>);
   }
-} 
+}
