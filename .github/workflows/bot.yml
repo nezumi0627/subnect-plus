@@ -1,0 +1,157 @@
+name: Nezumaid Bot
+
+on:
+  issues:
+    types: [opened, reopened, closed, labeled, unlabeled]
+  pull_request:
+    types: [opened, reopened, synchronize, closed, labeled, unlabeled, ready_for_review]
+  issue_comment:
+    types: [created]
+  discussion:
+    types: [created, edited, answered, labeled, unlabeled]
+  pull_request_review:
+    types: [submitted, edited]
+
+jobs:
+  bot:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+      discussions: write
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Process Issue Events
+        if: github.event_name == 'issues'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ "${{ github.event.action }}" = "opened" ]; then
+            # バグ報告の場合
+            if echo "${{ github.event.issue.body }}" | grep -i "bug\|error\|問題\|バグ" > /dev/null; then
+              gh issue edit "${{ github.event.issue.number }}" --add-label "bug"
+              gh issue comment "${{ github.event.issue.number }}" --body "バグ報告ありがとうございます！🐛
+              
+              以下の情報を追加で記載いただけると助かります：
+              - 発生環境（OS、ブラウザのバージョンなど）
+              - 再現手順
+              - 期待される動作
+              
+              できるだけ早く対応いたします。"
+            
+            # 機能要望の場合
+            elif echo "${{ github.event.issue.body }}" | grep -i "feature\|enhancement\|要望\|機能" > /dev/null; then
+              gh issue edit "${{ github.event.issue.number }}" --add-label "enhancement"
+              gh issue comment "${{ github.event.issue.number }}" --body "機能要望ありがとうございます！💡
+              
+              要望の実現可能性を検討させていただきます。
+              追加の詳細や具体的なユースケースがありましたら、コメントでお知らせください。"
+            
+            # その他の場合
+            else
+              gh issue edit "${{ github.event.issue.number }}" --add-label "triage"
+              gh issue comment "${{ github.event.issue.number }}" --body "issueの作成ありがとうございます！
+              
+              内容を確認次第、適切なラベルを付与し、対応を開始いたします。
+              追加の情報が必要な場合は、お知らせいたしますので、よろしくお願いいたします。"
+            fi
+
+      - name: Process PR Events
+        if: github.event_name == 'pull_request'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ "${{ github.event.action }}" = "opened" ] || [ "${{ github.event.action }}" = "ready_for_review" ]; then
+            # PRのサイズに基づいてラベル付け
+            CHANGES=$(gh pr view ${{ github.event.pull_request.number }} --json additions,deletions --jq '.additions + .deletions')
+            if [ $CHANGES -lt 50 ]; then
+              SIZE_LABEL="size/XS"
+            elif [ $CHANGES -lt 200 ]; then
+              SIZE_LABEL="size/S"
+            elif [ $CHANGES -lt 500 ]; then
+              SIZE_LABEL="size/M"
+            else
+              SIZE_LABEL="size/L"
+            fi
+            gh pr edit "${{ github.event.pull_request.number }}" --add-label "$SIZE_LABEL"
+
+            # レビュアーの自動割り当て
+            gh pr edit "${{ github.event.pull_request.number }}" --add-reviewer "nezumi0627"
+
+            # PRの種類に基づいてコメント
+            if echo "${{ github.event.pull_request.title }}" | grep -i "fix\|bug" > /dev/null; then
+              gh pr comment "${{ github.event.pull_request.number }}" --body "バグ修正のPRありがとうございます！🔧
+              
+              以下の点を確認させていただきます：
+              - [ ] バグの修正内容は適切か
+              - [ ] テストは追加されているか
+              - [ ] 関連するドキュメントは更新されているか
+              
+              レビューを開始いたしますので、しばらくお待ちください。"
+            else
+              gh pr comment "${{ github.event.pull_request.number }}" --body "PRありがとうございます！🎉
+              
+              以下の点を確認させていただきます：
+              - [ ] 実装は仕様通りか
+              - [ ] コードの品質は適切か
+              - [ ] テストは十分か
+              
+              レビューを開始いたしますので、しばらくお待ちください。"
+            fi
+
+      - name: Process Discussion Events
+        if: github.event_name == 'discussion'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ "${{ github.event.action }}" = "created" ]; then
+            # Q&Aの場合
+            if [ "${{ github.event.discussion.category.name }}" = "Q&A" ]; then
+              gh discussion comment "${{ github.event.discussion.number }}" --body "ご質問ありがとうございます！❓
+              
+              できるだけ早く回答いたしますので、しばらくお待ちください。
+              追加の情報が必要な場合は、お知らせいたします。
+              
+              また、以下の点もご確認ください：
+              - [ドキュメント](https://github.com/nezumi0627/subnect-plus/tree/main/docs)
+              - [既存のQ&A](https://github.com/nezumi0627/subnect-plus/discussions/categories/q-a)"
+            
+            # アイデアの場合
+            elif [ "${{ github.event.discussion.category.name }}" = "Ideas" ]; then
+              gh discussion comment "${{ github.event.discussion.number }}" --body "素晴らしいアイデアをありがとうございます！💭
+              
+              プロジェクトの改善に向けて、以下の点を検討させていただきます：
+              - 実現可能性
+              - 優先度
+              - 実装方法
+              
+              コミュニティからのフィードバックもお待ちしております。"
+            fi
+          fi
+
+      - name: Process Review Events
+        if: github.event_name == 'pull_request_review'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ "${{ github.event.review.state }}" = "changes_requested" ]; then
+            gh pr comment "${{ github.event.pull_request.number }}" --body "レビューコメントが追加されました。
+            
+            修正が完了しましたら、以下の手順で対応をお願いします：
+            1. レビューコメントの内容を確認
+            2. 必要な修正を実施
+            3. コミットとプッシュ
+            4. レビューコメントに返信
+            
+            ご不明な点がありましたら、お気軽にコメントでお知らせください。"
+          elif [ "${{ github.event.review.state }}" = "approved" ]; then
+            gh pr comment "${{ github.event.pull_request.number }}" --body "PRが承認されました！🎉
+            
+            マージの準備が整いました。以下の点を最終確認してください：
+            - [ ] コンフリクトがないこと
+            - [ ] CIチェックがパスしていること
+            - [ ] 最新のmainブランチの変更を取り込んでいること"
+          fi 
