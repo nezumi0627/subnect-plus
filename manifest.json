@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Subnect+",
+  "version": "0.0.1",
+  "description": "Subnectの機能を拡張するChrome拡張機能",
+  "permissions": [
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://subnect.com/*"],
+      "js": ["content.js"],
+      "css": ["styles/main.css"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["icons/*", "styles/*"],
+      "matches": ["https://subnect.com/*"]
+    }
+  ],
+  "icons": {
+    "16": "icons/icon.svg",
+    "48": "icons/icon.svg",
+    "128": "icons/icon.svg"
+  }
+} 

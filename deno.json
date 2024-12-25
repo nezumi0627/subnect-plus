@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "strict": true
+  },
+  "fmt": {
+    "include": ["src/**/*.ts"],
+    "exclude": ["dist/**/*.js"],
+    "options": {
+      "useTabs": false,
+      "lineWidth": 100,
+      "indentWidth": 2,
+      "singleQuote": true
+    }
+  },
+  "lint": {
+    "include": ["src/**/*.ts"],
+    "exclude": ["dist/**/*.js"],
+    "rules": {
+      "include": ["no-unused-vars"],
+      "exclude": ["no-explicit-any"]
+    }
+  },
+  "tasks": {
+    "clean": "rm -rf dist && mkdir dist",
+    "copy-assets": "cp manifest.json dist/ && cp -r styles/ dist/styles/ && cp -r icons/ dist/icons/",
+    "build:js": "deno run -A npm:esbuild src/content/main.ts --bundle --outfile=dist/content.js",
+    "build": "deno task clean && deno task copy-assets && deno task build:js",
+    "watch": "deno task build && deno run -A npm:esbuild src/content/main.ts --bundle --outfile=dist/content.js --watch",
+    "check": "deno check src/**/*.ts",
+    "fmt": "deno fmt",
+    "lint": "deno lint"
+  }
+} 

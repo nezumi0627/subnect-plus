@@ -1,0 +1,24 @@
+# Deno
+.env
+deno.lock
+
+# Build output
+dist/
+
+# Dependencies
+node_modules/
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log* 
