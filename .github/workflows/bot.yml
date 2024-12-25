@@ -1,0 +1,37 @@
+name: Nezumaid Bot
+
+on:
+  issues:
+    types: [opened, edited, closed, reopened]
+  pull_request:
+    types: [opened, edited, closed, reopened, synchronize]
+  issue_comment:
+    types: [created, edited, deleted]
+  discussion:
+    types: [created, edited, answered]
+  pull_request_review:
+    types: [submitted, edited, dismissed]
+
+jobs:
+  bot:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+      discussions: write
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: 1.38.5
+
+      - name: Run Bot
+        run: deno run --allow-net src/bot/main.ts
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          APP_ID: ${{ secrets.APP_ID }}
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }} 
