@@ -23,7 +23,7 @@
     </tr>
     <tr>
       <td>Deno</td>
-      <td>1.38.5</td>
+      <td>2.1.4</td>
       <td>実行環境</td>
     </tr>
     <tr>

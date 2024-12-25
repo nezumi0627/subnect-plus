@@ -20,7 +20,7 @@
     </a>
     &nbsp;
     <a href="https://deno.land">
-      <img src="https://img.shields.io/badge/deno-1.38.5-informational.svg" alt="Deno: 1.38.5">
+      <img src="https://img.shields.io/badge/deno-2.1.4-informational.svg" alt="Deno: 2.1.4">
     </a>
     &nbsp;
     <a href="https://www.typescriptlang.org/">
