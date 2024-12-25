@@ -15,7 +15,7 @@
   <h2>技術スタック</h2>
   <p>開発には以下の技術を使用しています：</p>
 
-  <table>
+<table>
     <tr>
       <th align="left">技術</th>
       <th align="left">バージョン</th>
@@ -45,7 +45,7 @@
   <h2>開発環境の要件</h2>
   <p>開発には以下の環境が必要です：</p>
 
-  <ul>
+<ul>
     <li>Node.js 18以上</li>
     <li>Deno 1.38.5以上</li>
     <li>Chrome最新版</li>
@@ -58,7 +58,7 @@
   <h2>ディレクトリ構造</h2>
   <p>プロジェクトは以下の構造で構成されています：</p>
 
-  <pre><code>subnect-plus/
+<pre><code>subnect-plus/
 ├── src/
 │   ├── content/      # コンテンツスクリプト
 │   ├── background/   # バックグラウンドスクリプト
@@ -67,7 +67,7 @@
 ├── styles/           # スタイルシート
 └── docs/            # ドキュメント</code></pre>
 
-  <div align="center">
+<div align="center">
     <p><i>※ 各ディレクトリの詳細な説明は各READMEを参照してください</i></p>
   </div>
-</div> 
+</div>

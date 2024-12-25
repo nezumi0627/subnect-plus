@@ -1,12 +1,12 @@
 <div align="center">
   <img src=".github/assets/banner.svg" alt="Subnect+ Banner" width="800" />
 
-  <h1>Subnect+</h1>
+<h1>Subnect+</h1>
   <p><i>pre-Alpha 0.1.0</i></p>
 
-  <p><b>Enhance Your Subnect Experience</b></p>
+<p><b>Enhance Your Subnect Experience</b></p>
 
-  <p>
+<p>
     <a href="docs/features.md">Features</a> •
     <a href="docs/development.md">Development</a> •
     <a href="docs/installation.md">Installation</a> •
@@ -14,7 +14,7 @@
     <a href="LICENSE">License</a>
   </p>
 
-  <p>
+<p>
     <a href="https://github.com/nezumi0627/subnect-plus/blob/main/LICENSE">
       <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT">
     </a>
@@ -45,11 +45,13 @@ Subnect+は、Subnectをより使いやすくするChrome拡張機能です。
 ## クイックスタート
 
 1. このリポジトリをクローン
+
 ```bash
 git clone https://github.com/nezumi0627/subnect-plus.git
 ```
 
 2. 依存関係をインストールしてビルド
+
 ```bash
 deno cache src/content/main.ts
 deno task build
@@ -65,4 +67,4 @@ deno task build
 
 ## ライセンス
 
-このプロジェクトは[MIT License](LICENSE)の下で公開されています。 
+このプロジェクトは[MIT License](LICENSE)の下で公開されています。
