@@ -1,4 +1,4 @@
-import { VERSION, AUTHOR, GITHUB_URL } from '../../constants/config.ts';
+import { AUTHOR, GITHUB_URL, VERSION } from '../../constants/config.ts';
 import { StorageService } from '../services/storage.ts';
 import { DOMUtils } from '../utils/dom.ts';
 import { LogoComponent } from './logo.ts';
@@ -119,7 +119,7 @@ export class SettingsComponent {
       changeLogo.checked = settings.changeLogo || false;
       changeLogo.addEventListener('change', async (e: Event) => {
         const target = e.target as HTMLInputElement;
-        await StorageService.setLogoEnabled(target.checked);
+        await StorageService.setSettings({ changeLogo: target.checked });
         LogoComponent.getInstance().changeLogo(target.checked);
       });
     }

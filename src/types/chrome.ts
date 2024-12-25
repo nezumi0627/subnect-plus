@@ -4,9 +4,10 @@ declare global {
     runtime: {
       getURL(path: string): string;
     };
+
     storage: {
       sync: {
-        get<T = unknown>(keys: string[]): Promise<T>;
+        get(keys: string[]): Promise<Record<string, unknown>>;
         set(items: Record<string, unknown>): Promise<void>;
       };
     };

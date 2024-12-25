@@ -17,7 +17,8 @@ export class LogoComponent {
 
     if (enabled) {
       this.logoChanged = true;
-      logoLink.className = 'h-[50px] p-[5px] top-0 sticky flex bg-[var(--back-color)] border-b border-[var(--border-color)] z-20';
+      logoLink.className =
+        'h-[50px] p-[5px] top-0 sticky flex bg-[var(--back-color)] border-b border-[var(--border-color)] z-20';
       
       const titleDiv = logoLink.querySelector('div');
       if (titleDiv) {
@@ -33,7 +34,8 @@ export class LogoComponent {
       }
     } else {
       this.logoChanged = false;
-      logoLink.className = 'h-[50px] p-[5px] top-0 sticky flex bg-[var(--back-color)] border-b border-[var(--border-color)] z-20';
+      logoLink.className =
+        'h-[50px] p-[5px] top-0 sticky flex bg-[var(--back-color)] border-b border-[var(--border-color)] z-20';
       
       const titleDiv = logoLink.querySelector('div');
       if (titleDiv) {
