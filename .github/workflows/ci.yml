@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup Deno
         uses: denoland/setup-deno@v1
         with:
@@ -19,15 +19,17 @@ jobs:
 
       - name: Verify formatting
         run: deno fmt --check
+        if: ${{ !cancelled() }}
 
       - name: Run linter
         run: deno lint
+        if: ${{ !cancelled() }}
 
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup Deno
         uses: denoland/setup-deno@v1
         with:
@@ -50,4 +52,4 @@ jobs:
           languages: typescript
 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v2 
+        uses: github/codeql-action/analyze@v2
