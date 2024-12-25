@@ -1,0 +1,31 @@
+{
+  "id": 3,
+  "name": "feature-protection",
+  "target": "branch",
+  "source_type": "Repository",
+  "source": "nezumi0627/subnect-plus",
+  "enforcement": "active",
+  "conditions": {
+    "ref_name": {
+      "exclude": [],
+      "include": [
+        "refs/heads/feature/*"
+      ]
+    }
+  },
+  "rules": [
+    {
+      "type": "required_status_checks",
+      "parameters": {
+        "strict_required_status_checks_policy": false,
+        "required_status_checks": [
+          {
+            "context": "lint",
+            "integration_id": null
+          }
+        ]
+      }
+    }
+  ],
+  "bypass_actors": []
+} 
