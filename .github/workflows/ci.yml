@@ -13,9 +13,9 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Setup Deno
-        uses: denoland/setup-deno@v1
+        uses: denoland/setup-deno@v2
         with:
-          deno-version: 1.38.5
+          deno-version: v2.x
 
       - name: Verify formatting
         run: deno fmt --check
@@ -31,9 +31,9 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Setup Deno
-        uses: denoland/setup-deno@v1
+        uses: denoland/setup-deno@v2
         with:
-          deno-version: 1.38.5
+          deno-version: v2.x
 
       - name: Cache dependencies
         run: deno cache src/content/main.ts
