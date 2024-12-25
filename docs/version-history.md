@@ -43,4 +43,4 @@
   <div align="right">
     <p><i>リリース日: 2024/12/24</i></p>
   </div>
-</div> 
+</div>

@@ -65,4 +65,4 @@ deno task build
 
 ## ライセンス
 
-このプロジェクトは[MIT License](LICENSE)の下で公開されています。 
+このプロジェクトは[MIT License](LICENSE)の下で公開されています。

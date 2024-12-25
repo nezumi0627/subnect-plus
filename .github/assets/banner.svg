@@ -42,27 +42,27 @@
           <path d="M175 200H325C338.807 200 350 211.193 350 225V275C350 288.807 338.807 300 325 300H175V200Z"/>
           <path d="M175 25C175 11.1929 186.193 0 200 0H325C338.807 0 350 11.1929 350 25V75C350 88.8071 338.807 100 325 100H175V25Z"/>
         </svg>
-        <animate attributeName="opacity" 
-                 values="0;1" 
-                 dur="0.8s" 
-                 begin="0s" 
+        <animate attributeName="opacity"
+                 values="0;1"
+                 dur="0.8s"
+                 begin="0s"
                  fill="freeze"
                  calcMode="spline"
                  keySplines="0.4 0 0.6 1" />
       </g>
 
       <!-- メインテキスト -->
-      <text x="70" y="45" 
-            font-family="Arial, sans-serif" 
-            font-size="48" 
-            font-weight="bold" 
+      <text x="70" y="45"
+            font-family="Arial, sans-serif"
+            font-size="48"
+            font-weight="bold"
             fill="white"
             filter="url(#text-shadow)">
         Subnect+
-        <animate attributeName="opacity" 
-                 values="0;1" 
-                 dur="1s" 
-                 begin="0.2s" 
+        <animate attributeName="opacity"
+                 values="0;1"
+                 dur="1s"
+                 begin="0.2s"
                  fill="freeze"
                  calcMode="spline"
                  keySplines="0.4 0 0.6 1" />
@@ -70,18 +70,18 @@
     </g>
 
     <!-- サブテキスト -->
-    <text x="0" y="50" 
-          font-family="Arial, sans-serif" 
-          font-size="20" 
+    <text x="0" y="50"
+          font-family="Arial, sans-serif"
+          font-size="20"
           fill="#94a3b8"
           filter="url(#text-shadow)"
           text-anchor="middle"
           letter-spacing="0.5">
       Enhance Your Subnect Experience
-      <animate attributeName="opacity" 
-               values="0;1" 
-               dur="1s" 
-               begin="0.4s" 
+      <animate attributeName="opacity"
+               values="0;1"
+               dur="1s"
+               begin="0.4s"
                fill="freeze"
                calcMode="spline"
                keySplines="0.4 0 0.6 1" />
@@ -89,10 +89,10 @@
 
     <!-- アクセントライン -->
     <rect x="-100" y="70" width="200" height="1" fill="url(#accent-gradient)" opacity="0.2">
-      <animate attributeName="width" 
-               values="0;200" 
-               dur="1s" 
-               begin="0.6s" 
+      <animate attributeName="width"
+               values="0;200"
+               dur="1s"
+               begin="0.6s"
                fill="freeze"
                calcMode="spline"
                keySplines="0.4 0 0.6 1" />

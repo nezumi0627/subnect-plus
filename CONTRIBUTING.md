@@ -85,4 +85,4 @@ git remote add origin https://github.com/nezumi0627/subnect-plus.git
 git push -u origin main
 git push -u origin develop
 git push -u origin feature/initial-setup
-``` 
+```

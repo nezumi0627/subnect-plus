@@ -27,4 +27,4 @@
 
 .toggle:checked::before {
   transform: translateX(20px);
-} 
+}

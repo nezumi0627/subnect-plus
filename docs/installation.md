@@ -47,4 +47,4 @@
   <div align="center">
     <p><i>※ インストール後はChromeの再起動が必要な場合があります</i></p>
   </div>
-</div> 
+</div>

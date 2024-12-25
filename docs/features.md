@@ -40,4 +40,4 @@
   <div align="center">
     <img src="../icons/subnect-plus.svg" alt="New Logo" width="64" height="64">
   </div>
-</div> 
+</div>
