@@ -18,6 +18,9 @@
       "type": "deletion"
     },
     {
+      "type": "non_fast_forward"
+    },
+    {
       "type": "required_linear_history"
     },
     {
@@ -27,7 +30,6 @@
         "dismiss_stale_reviews_on_push": true,
         "required_review_thread_resolution": true,
         "allowed_merge_methods": [
-          "merge",
           "squash"
         ]
       }
@@ -43,6 +45,10 @@
           },
           {
             "context": "lint",
+            "integration_id": null
+          },
+          {
+            "context": "test",
             "integration_id": null
           }
         ]
