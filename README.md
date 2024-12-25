@@ -71,4 +71,4 @@ deno task build
 
 ## コントリビュータ
 
-![](https://avatars.githubusercontent.com/MocA-Love?size=16)
+![](https://github.com/MocA-Love.png?size=16)
