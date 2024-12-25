@@ -1,73 +1,68 @@
 <div align="center">
-  <img src=".github/assets/banner.svg" alt="Subnect+ Banner" />
+  <img src=".github/assets/banner.svg" alt="Subnect+ Banner" width="800" />
+
+  <h1>Subnect+</h1>
+  <p><i>pre-Alpha 0.1.0</i></p>
+
+  <p><b>Enhance Your Subnect Experience</b></p>
+
+  <p>
+    <a href="docs/features.md">Features</a> •
+    <a href="docs/development.md">Development</a> •
+    <a href="docs/installation.md">Installation</a> •
+    <a href="CONTRIBUTING.md">Contributing</a> •
+    <a href="LICENSE">License</a>
+  </p>
+
+  <p>
+    <a href="https://github.com/nezumi0627/subnect-plus/blob/main/LICENSE">
+      <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT">
+    </a>
+    &nbsp;
+    <a href="https://deno.land">
+      <img src="https://img.shields.io/badge/deno-1.38.5-informational.svg" alt="Deno: 1.38.5">
+    </a>
+    &nbsp;
+    <a href="https://www.typescriptlang.org/">
+      <img src="https://img.shields.io/badge/typescript-%23007ACC.svg?logo=typescript&logoColor=white" alt="TypeScript">
+    </a>
+  </p>
 </div>
 
-# Subnect+ (pre-Alpha 0.1.0)
+## 概要
 
-Enhance Your Subnect Experience
+Subnect+は、Subnectをより使いやすくするChrome拡張機能です。
+設定の追加やUIの改善など、様々な機能拡張を提供します。
 
-## 実装済み機能
+## 主な機能
 
-### [2024/12/25] Setting Button
-- 設定ページに拡張機能の設定を追加
-- 設定メニューからSubnect+の設定にアクセス可能
+- [設定ページ](docs/features.md#setting-button)の追加
+- [ロゴデザイン](docs/features.md#change-logo-subnect)の刷新
+- その他の機能改善
 
-### [2024/12/25] Change Logo Subnect+
-- Subnectのロゴを「Subnect+」に変更
-- ロゴの色を青色に変更
+詳しい機能については[機能一覧](docs/features.md)を参照してください。
 
-<details>
-<summary>## バージョン履歴</summary>
-
-### pre-Alpha 0.1.0
-- 設定ページの機能を追加
-- ロゴを「Subnect+」に変更
-- バナーデザインを刷新
-- MIT Licenseを追加
-
-### pre-Alpha 0.0.1
-- プロジェクトを作成
-- 基本的なファイル構造を設定
-- Chrome拡張機能の基本設定を実装
-
-</details>
-
-## 開発環境
-
-- Deno 1.38.5
-- TypeScript
-- Chrome Extension Manifest V3
-
-## インストール方法
+## クイックスタート
 
 1. このリポジトリをクローン
 ```bash
 git clone https://github.com/nezumi0627/subnect-plus.git
 ```
 
-2. 依存関係をインストール
+2. 依存関係をインストールしてビルド
 ```bash
 deno cache src/content/main.ts
-```
-
-3. ビルド
-```bash
 deno task build
 ```
 
-4. Chromeの拡張機能ページ（`chrome://extensions`）を開く
-5. デベロッパーモードを有効にする
-6. 「パッケージ化されていない拡張機能を読み込む」をクリック
-7. `dist`フォルダを選択
+詳しいインストール手順は[インストールガイド](docs/installation.md)を参照してください。
 
-## 開発への参加
+## バージョン情報
 
-1. このリポジトリをフォーク
-2. 機能追加やバグ修正を実装
-3. プルリクエストを作成
+現在のバージョン: pre-Alpha 0.1.0
 
-詳しくは[CONTRIBUTING.md](CONTRIBUTING.md)を参照してください。
+詳しいバージョン履歴は[バージョン履歴](docs/version-history.md)を参照してください。
 
 ## ライセンス
 
-MIT License 
+このプロジェクトは[MIT License](LICENSE)の下で公開されています。 
