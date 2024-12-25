@@ -1,6 +1,10 @@
-# Subnect+
+<div align="center">
+  <img src=".github/assets/banner.svg" alt="Subnect+ Banner" />
+</div>
 
-Subnectをより使いやすくするChrome拡張機能
+# Subnect+ (pre-Alpha 0.1.0)
+
+Enhance Your Subnect Experience
 
 ## 実装済み機能
 
@@ -11,6 +15,22 @@ Subnectをより使いやすくするChrome拡張機能
 ### [2024/12/25] Change Logo Subnect+
 - Subnectのロゴを「Subnect+」に変更
 - ロゴの色を青色に変更
+
+<details>
+<summary>## バージョン履歴</summary>
+
+### pre-Alpha 0.1.0
+- 設定ページの機能を追加
+- ロゴを「Subnect+」に変更
+- バナーデザインを刷新
+- MIT Licenseを追加
+
+### pre-Alpha 0.0.1
+- プロジェクトを作成
+- 基本的なファイル構造を設定
+- Chrome拡張機能の基本設定を実装
+
+</details>
 
 ## 開発環境
 
