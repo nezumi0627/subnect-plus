@@ -78,7 +78,7 @@
 
     <!-- First Contributor -->
     <g class="avatar-container">
-      <img crossorigin x="160" y="60" width="80" height="80" clip-path="url(#avatar-clip-1)"
+      <img crossorigin="anonymous" x="160" y="60" width="80" height="80" clip-path="url(#avatar-clip-1)"
              xlink:href="https://avatars.githubusercontent.com/MocA-Love?size=160"/>
       <circle class="avatar-circle" cx="200" cy="100" r="40"/>
     </g>
@@ -86,7 +86,7 @@
 
     <!-- Second Contributor -->
     <g class="avatar-container">
-      <img crossorigin x="360" y="60" width="80" height="80" clip-path="url(#avatar-clip-2)"
+      <img crossorigin="anonymous" x="360" y="60" width="80" height="80" clip-path="url(#avatar-clip-2)"
              xlink:href="https://avatars.githubusercontent.com/akku1139?size=160"/>
       <circle class="avatar-circle" cx="400" cy="100" r="40"/>
     </g>
