@@ -2,16 +2,16 @@ name: CI
 
 on:
   push:
-    branches: [ main, develop, 'feature/*' ]
+    branches: [main, develop, 'feature/*']
   pull_request:
-    branches: [ main, develop ]
+    branches: [main, develop]
 
 jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup Deno
         uses: denoland/setup-deno@v1
         with:
@@ -27,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup Deno
         uses: denoland/setup-deno@v1
         with:
@@ -50,4 +50,4 @@ jobs:
           languages: typescript
 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v2 
+        uses: github/codeql-action/analyze@v2

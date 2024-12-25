@@ -13,17 +13,17 @@
 <div id="setup">
   <h2>開発環境のセットアップ</h2>
 
-  <div>
+<div>
     <h3>1. リポジトリのクローン</h3>
     <pre><code>git clone https://github.com/nezumi0627/subnect-plus.git</code></pre>
   </div>
 
-  <div>
+<div>
     <h3>2. 依存関係のインストール</h3>
     <pre><code>deno cache src/content/main.ts</code></pre>
   </div>
 
-  <div>
+<div>
     <h3>3. ビルド</h3>
     <pre><code>deno task build</code></pre>
   </div>
@@ -34,7 +34,7 @@
 <div id="chrome">
   <h2>Chromeへのインストール</h2>
 
-  <div>
+<div>
     <h3>手順</h3>
     <ol>
       <li>Chromeの拡張機能ページ（<code>chrome://extensions</code>）を開く</li>
@@ -44,7 +44,7 @@
     </ol>
   </div>
 
-  <div align="center">
+<div align="center">
     <p><i>※ インストール後はChromeの再起動が必要な場合があります</i></p>
   </div>
-</div> 
+</div>
