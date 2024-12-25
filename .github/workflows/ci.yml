@@ -33,9 +33,6 @@ jobs:
         with:
           deno-version: 1.38.5
 
-      - name: Cache dependencies
-        run: deno cache src/content/main.ts
-
       - name: Build
         run: deno task build
 
