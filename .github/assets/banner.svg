@@ -27,22 +27,6 @@
     <animate attributeName="opacity" from="0" to="1" dur="1s" begin="0s" fill="freeze" />
   </rect>
 
-  <!-- 装飾的な背景パターン -->
-  <path d="M0,100 Q200,80 400,100 T800,100" 
-        stroke="url(#accent-gradient)" 
-        stroke-width="0.5" 
-        fill="none" 
-        opacity="0.08">
-    <animate attributeName="d" 
-             dur="10s" 
-             repeatCount="indefinite"
-             values="M0,100 Q200,80 400,100 T800,100;
-                     M0,110 Q200,90 400,110 T800,110;
-                     M0,100 Q200,80 400,100 T800,100"
-             calcMode="spline"
-             keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"/>
-  </path>
-
   <!-- メインコンテンツグループ -->
   <g transform="translate(400,100)">
     <!-- ロゴとテキストのグループ -->
