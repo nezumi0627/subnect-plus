@@ -72,5 +72,5 @@ deno task build
 ## コントリビュータ
 
 <div align="center">
-    <iframe src=".github/assets/contributors.html" alt="Contributors" width="600"></iframe>
+    <img src=".github/assets/contributors.svg" alt="Contributors" width="600"></img>
 </div>
