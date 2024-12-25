@@ -1,18 +1,31 @@
 {
-  "pattern": "feature/*",
-  "rules": {
-    "required_status_checks": {
-      "strict": false,
-      "contexts": [
-        "lint"
+  "id": 3,
+  "name": "feature-protection",
+  "target": "branch",
+  "source_type": "Repository",
+  "source": "nezumi0627/subnect-plus",
+  "enforcement": "active",
+  "conditions": {
+    "ref_name": {
+      "exclude": [],
+      "include": [
+        "refs/heads/feature/*"
       ]
-    },
-    "required_pull_request_reviews": null,
-    "enforce_admins": false,
-    "required_linear_history": false,
-    "allow_force_pushes": true,
-    "allow_deletions": true,
-    "required_conversation_resolution": false,
-    "block_creations": false
-  }
+    }
+  },
+  "rules": [
+    {
+      "type": "required_status_checks",
+      "parameters": {
+        "strict_required_status_checks_policy": false,
+        "required_status_checks": [
+          {
+            "context": "lint",
+            "integration_id": null
+          }
+        ]
+      }
+    }
+  ],
+  "bypass_actors": []
 } 
