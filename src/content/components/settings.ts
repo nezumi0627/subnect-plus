@@ -80,7 +80,7 @@ export class SettingsComponent {
       </header>
       <div class="p-[5px] flex flex-col">
         <div class="h-[60px] p-[5px] flex justify-between rounded-[5px] hover:bg-[var(--border-color)]">
-          <div class="flex items-center">ロゴをSubnect+に変更</div>
+          <div class="flex items-center">Change Logo Subnect+</div>
           <div class="flex items-center">
             <input type="checkbox" class="toggle" id="changeLogo">
           </div>

@@ -1,0 +1,101 @@
+<svg width="800" height="200" viewBox="0 0 800 200" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1e293b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#334155;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="accent-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#60a5fa;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#93c5fd;stop-opacity:1" />
+    </linearGradient>
+
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2" />
+      <feComposite in="SourceGraphic" operator="over" />
+    </filter>
+
+    <filter id="text-shadow">
+      <feDropShadow dx="0" dy="1" stdDeviation="1" flood-color="#000" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <!-- メイン背景 -->
+  <rect width="800" height="200" fill="url(#bg-gradient)">
+    <animate attributeName="opacity" from="0" to="1" dur="1s" begin="0s" fill="freeze" />
+  </rect>
+
+  <!-- メインコンテンツグループ -->
+  <g transform="translate(400,100)">
+    <!-- ロゴとテキストのグループ -->
+    <g transform="translate(-180,-30)">
+      <!-- ロゴ -->
+      <g transform="translate(0,0) scale(0.15)">
+        <svg width="350" height="400" viewBox="0 0 350 400" xmlns="http://www.w3.org/2000/svg">
+          <style>
+            path { fill: #3b82f6; }
+          </style>
+          <path d="M0 125C0 111.193 11.1929 100 25 100H175V200H25C11.1929 200 0 188.807 0 175V125Z"/>
+          <path d="M0 325C0 311.193 11.1929 300 25 300H175V375C175 388.807 163.807 400 150 400H25C11.1929 400 0 388.807 0 375V325Z"/>
+          <path d="M175 200H325C338.807 200 350 211.193 350 225V275C350 288.807 338.807 300 325 300H175V200Z"/>
+          <path d="M175 25C175 11.1929 186.193 0 200 0H325C338.807 0 350 11.1929 350 25V75C350 88.8071 338.807 100 325 100H175V25Z"/>
+        </svg>
+        <animate attributeName="opacity" 
+                 values="0;1" 
+                 dur="0.8s" 
+                 begin="0s" 
+                 fill="freeze"
+                 calcMode="spline"
+                 keySplines="0.4 0 0.6 1" />
+      </g>
+
+      <!-- メインテキスト -->
+      <text x="70" y="45" 
+            font-family="Arial, sans-serif" 
+            font-size="48" 
+            font-weight="bold" 
+            fill="white"
+            filter="url(#text-shadow)">
+        Subnect+
+        <animate attributeName="opacity" 
+                 values="0;1" 
+                 dur="1s" 
+                 begin="0.2s" 
+                 fill="freeze"
+                 calcMode="spline"
+                 keySplines="0.4 0 0.6 1" />
+      </text>
+    </g>
+
+    <!-- サブテキスト -->
+    <text x="0" y="50" 
+          font-family="Arial, sans-serif" 
+          font-size="20" 
+          fill="#94a3b8"
+          filter="url(#text-shadow)"
+          text-anchor="middle"
+          letter-spacing="0.5">
+      Enhance Your Subnect Experience
+      <animate attributeName="opacity" 
+               values="0;1" 
+               dur="1s" 
+               begin="0.4s" 
+               fill="freeze"
+               calcMode="spline"
+               keySplines="0.4 0 0.6 1" />
+    </text>
+
+    <!-- アクセントライン -->
+    <rect x="-100" y="70" width="200" height="1" fill="url(#accent-gradient)" opacity="0.2">
+      <animate attributeName="width" 
+               values="0;200" 
+               dur="1s" 
+               begin="0.6s" 
+               fill="freeze"
+               calcMode="spline"
+               keySplines="0.4 0 0.6 1" />
+    </rect>
+  </g>
+</svg>
