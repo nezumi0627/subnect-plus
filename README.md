@@ -4,7 +4,7 @@
 
 # Subnect+ (pre-Alpha 0.1.0)
 
-Enhance Your Subnect Experience
+## Enhance Your Subnect Experience
 
 ## 実装済み機能
 
@@ -17,7 +17,7 @@ Enhance Your Subnect Experience
 - ロゴの色を青色に変更
 
 <details>
-<summary>## バージョン履歴</summary>
+<summary>バージョン履歴</summary>
 
 ### pre-Alpha 0.1.0
 - 設定ページの機能を追加
