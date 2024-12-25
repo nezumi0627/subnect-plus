@@ -119,7 +119,7 @@ export class SettingsComponent {
       changeLogo.checked = settings.changeLogo || false;
       changeLogo.addEventListener('change', async (e: Event) => {
         const target = e.target as HTMLInputElement;
-        await StorageService.setLogoEnabled(target.checked);
+        await StorageService.setSettings({ changeLogo: target.checked });
         LogoComponent.getInstance().changeLogo(target.checked);
       });
     }
