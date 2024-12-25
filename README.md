@@ -1,30 +1,36 @@
+<div align="center">
+  <img src=".github/assets/banner.svg" alt="Subnect+ Banner" />
+</div>
+
 # Subnect+
 
-Subnectの機能を拡張するChrome拡張機能です。
+Subnectをより使いやすくするChrome拡張機能
 
-## 機能
+## 実装済み機能
 
-- ロゴをSubnect+に変更できます（青色のロゴに変更）
-- その他の機能は順次追加予定
+### [2024/12/25] Setting Button
+- 設定ページに拡張機能の設定を追加
+- 設定メニューからSubnect+の設定にアクセス可能
 
-## インストール
+### [2024/12/25] Change Logo Subnect+
+- Subnectのロゴを「Subnect+」に変更
+- ロゴの色を青色に変更
 
-1. このリポジトリをクローンまたはダウンロード
+## 開発環境
+
+- Deno 1.38.5
+- TypeScript
+- Chrome Extension Manifest V3
+
+## インストール方法
+
+1. このリポジトリをクローン
 ```bash
 git clone https://github.com/nezumi0627/subnect-plus.git
-cd subnect-plus
 ```
 
-2. 依存関係のインストール
+2. 依存関係をインストール
 ```bash
-# Denoのインストール（未インストールの場合）
-# Windows (PowerShell)
-irm https://deno.land/install.ps1 | iex
-
-# macOS/Linux
-curl -fsSL https://deno.land/install.sh | sh
-
-# 依存関係のキャッシュ
 deno cache src/content/main.ts
 ```
 
@@ -33,39 +39,19 @@ deno cache src/content/main.ts
 deno task build
 ```
 
-4. Chrome拡張機能としてインストール
-- Chromeで `chrome://extensions` を開く
-- デベロッパーモードを有効にする
-- 「パッケージ化されていない拡張機能を読み込む」をクリック
-- `dist` ディレクトリを選択
+4. Chromeの拡張機能ページ（`chrome://extensions`）を開く
+5. デベロッパーモードを有効にする
+6. 「パッケージ化されていない拡張機能を読み込む」をクリック
+7. `dist`フォルダを選択
 
-## 開発
+## 開発への参加
 
-```bash
-# 開発用ビルド（ファイル変更を監視）
-deno task watch
+1. このリポジトリをフォーク
+2. 機能追加やバグ修正を実装
+3. プルリクエストを作成
 
-# コードのフォーマット
-deno task fmt
-
-# リント
-deno task lint
-
-# 型チェック
-deno task check
-```
-
-## 技術スタック
-
-- [Deno](https://deno.land/) - TypeScriptランタイム
-- [TypeScript](https://www.typescriptlang.org/) - 型安全な開発
-- [Chrome Extension API](https://developer.chrome.com/docs/extensions/) - ブラウザ拡張機能
-- [Tailwind CSS](https://tailwindcss.com/) - スタイリング
+詳しくは[CONTRIBUTING.md](CONTRIBUTING.md)を参照してください。
 
 ## ライセンス
 
-MIT
-
-## 作者
-
-nezumi0627 
+MIT License 
