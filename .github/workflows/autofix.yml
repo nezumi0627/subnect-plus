@@ -1,0 +1,40 @@
+name: Auto fix
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: 1.38.5
+
+      - name: Switch branch
+        run: git switch -c autofix-${{ github.sha }}
+
+      - name: Format
+        run: deno fmt
+
+      - name: Git
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add -A
+            git commit -m "Auto fix"
+            git push -u origin autofix-${{ github.sha }}
+
+            gh pr create --base ${{ github.ref_name }} --title "Auto fix" --body ""
+          fi
