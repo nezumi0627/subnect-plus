@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# コミットメッセージの@pre-pushチェック
+commit_message=$(git log -1 --pretty=%B)
+if ! echo "$commit_message" | grep -q "@pre-push"; then
+    echo "❌ Error: Commit message must include @pre-push tag"
+    exit 1
+fi
+
+# Markdownファイルのフォーマットチェック
+if ! deno fmt --check; then
+    echo "❌ Error: Markdown format check failed"
+    exit 1
+fi
+
+exit 0 
