@@ -11,62 +11,31 @@ if ! echo "$commit_message" | grep -q "@pre-push"; then
 fi
 echo "✅ @pre-push tag check passed"
 
-# 変更されたファイルの取得
-changed_files=$(git diff --cached --name-only)
+# Lintチェック
+echo "🧹 Running linter checks..."
 
-# TypeScriptファイルのチェック
-ts_files=$(echo "$changed_files" | grep -E "\.tsx?$" || true)
-if [ -n "$ts_files" ]; then
-    echo "🔍 Checking TypeScript files..."
-    
-    # TypeScriptのビルドチェック
-    echo "🏗️ Building TypeScript..."
-    if ! deno check **/*.ts; then
-        echo "❌ TypeScript build failed"
-        exit 1
-    fi
-    
-    # Lintチェック
-    echo "🧹 Running linter..."
-    if ! deno lint; then
-        echo "❌ Lint check failed"
-        exit 1
-    fi
-    
-    echo "✅ TypeScript checks passed"
+# フォーマットチェック
+echo "📝 Verifying formatting..."
+if ! deno fmt --check; then
+    echo "❌ Format check failed"
+    exit 1
 fi
+echo "✅ Format check passed"
 
-# JSONファイルのチェック
-json_files=$(echo "$changed_files" | grep -E "\.json$" || true)
-if [ -n "$json_files" ]; then
-    echo "🔍 Checking JSON files..."
-    for file in $json_files; do
-        if ! deno fmt --check "$file"; then
-            echo "❌ JSON format check failed for $file"
-            exit 1
-        fi
-    done
-    echo "✅ JSON checks passed"
+# Lintチェック
+echo "🔍 Running linter..."
+if ! deno lint; then
+    echo "❌ Lint check failed"
+    exit 1
 fi
+echo "✅ Lint check passed"
 
-# Markdownファイルのチェック
-md_files=$(echo "$changed_files" | grep -E "\.md$" || true)
-if [ -n "$md_files" ]; then
-    echo "🔍 Checking Markdown files..."
-    if ! deno fmt --check; then
-        echo "❌ Markdown format check failed"
-        exit 1
-    fi
-    echo "✅ Markdown checks passed"
+# ビルドチェック
+echo "🏗️ Running build check..."
+if ! deno task build; then
+    echo "❌ Build failed"
+    exit 1
 fi
-
-# その他のファイルのチェック
-other_files=$(echo "$changed_files" | grep -vE "\.(tsx?|json|md)$" || true)
-if [ -n "$other_files" ]; then
-    echo "🔍 Checking other files..."
-    # ここに必要なチェックを追加（例：CSSのlintなど）
-    echo "✅ Other file checks passed"
-fi
+echo "✅ Build check passed"
 
 echo "✅ All checks passed! Ready to push."
-exit 0 
