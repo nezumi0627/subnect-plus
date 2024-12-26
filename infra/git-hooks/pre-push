@@ -1,0 +1,47 @@
+#!/bin/bash
+
+# git で push を行う際に、フォーマットチェックを実行する
+
+set -e -u -o pipefail
+
+CURRENT_DIR=$(pwd)
+DEBUG=0 # デバッグ出力を有効にするかどうか
+
+function echo_debug {
+  if [ "${DEBUG}" -eq 1 ]; then
+    echo "${@}" 1>&2
+  fi
+}
+
+while read local_ref local_sha1 remote_ref remote_sha1
+do
+  echo_debug "local_ref ${local_ref}"
+  echo_debug "local_sha1 ${local_sha1}"
+  echo_debug "remote_ref ${remote_ref}"
+  echo_debug "remote_sha1 ${remote_sha1}"
+
+  cd "${CURRENT_DIR}"
+
+  # チェック用のディレクトリがない場合は git worktree コマンドで準備
+  if [ ! -d .wt-pre-push-test ]; then
+    git worktree add .wt-pre-push-test ${local_ref}
+  fi
+
+  cd .wt-pre-push-test
+
+  # チェック用のディレクトリで、チェック対象のブランチをチェックアウト
+  git restore .
+  git checkout ${local_ref}
+
+  # フォーマットチェックを実行
+  set +e
+  echo_debug "Check deno fmt" 1>&2
+  RESULT=$(deno fmt --check .github/)
+  EXIT_CODE=$?
+  set -e
+
+  if [ ${EXIT_CODE} -ne 0 ]; then
+    echo "[ERROR] branch ${local_ref} should be formatted." 1>&2
+    exit 1
+  fi
+done 
