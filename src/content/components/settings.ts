@@ -18,7 +18,9 @@ export class SettingsComponent {
 
   addSettingsLink(): void {
     const settingsMenu = DOMUtils.findSettingsMenu();
-    if (!settingsMenu || document.querySelector('#subnect-plus-settings')) return;
+    if (!settingsMenu || document.querySelector('#subnect-plus-settings')) {
+      return;
+    }
 
     const plusSettings = document.createElement('a');
     plusSettings.id = 'subnect-plus-settings';
@@ -50,7 +52,9 @@ export class SettingsComponent {
   cleanupSettings(): void {
     if (globalThis.location.pathname !== '/settings') return;
 
-    const settingsContent = document.querySelector('#subnect-plus-settings-content');
+    const settingsContent = document.querySelector(
+      '#subnect-plus-settings-content',
+    );
     const settingsMenu = DOMUtils.findSettingsMenu();
 
     if (settingsContent) {
@@ -114,7 +118,9 @@ export class SettingsComponent {
 
   private async loadSettings(): Promise<void> {
     const settings = await StorageService.getSettings();
-    const changeLogo = document.getElementById('changeLogo') as HTMLInputElement;
+    const changeLogo = document.getElementById(
+      'changeLogo',
+    ) as HTMLInputElement;
     if (changeLogo) {
       changeLogo.checked = settings.changeLogo || false;
       changeLogo.addEventListener('change', async (e: Event) => {
