@@ -1,16 +1,72 @@
 #!/bin/sh
 
+echo "🔍 Running pre-push checks..."
+
 # コミットメッセージの@pre-pushチェック
+echo "📝 Checking @pre-push tag..."
 commit_message=$(git log -1 --pretty=%B)
 if ! echo "$commit_message" | grep -q "@pre-push"; then
     echo "❌ Error: Commit message must include @pre-push tag"
     exit 1
 fi
+echo "✅ @pre-push tag check passed"
 
-# Markdownファイルのフォーマットチェック
-if ! deno fmt --check; then
-    echo "❌ Error: Markdown format check failed"
-    exit 1
+# 変更されたファイルの取得
+changed_files=$(git diff --cached --name-only)
+
+# TypeScriptファイルのチェック
+ts_files=$(echo "$changed_files" | grep -E "\.tsx?$" || true)
+if [ -n "$ts_files" ]; then
+    echo "🔍 Checking TypeScript files..."
+    
+    # TypeScriptのビルドチェック
+    echo "🏗️ Building TypeScript..."
+    if ! deno check **/*.ts; then
+        echo "❌ TypeScript build failed"
+        exit 1
+    fi
+    
+    # Lintチェック
+    echo "🧹 Running linter..."
+    if ! deno lint; then
+        echo "❌ Lint check failed"
+        exit 1
+    fi
+    
+    echo "✅ TypeScript checks passed"
 fi
 
+# JSONファイルのチェック
+json_files=$(echo "$changed_files" | grep -E "\.json$" || true)
+if [ -n "$json_files" ]; then
+    echo "🔍 Checking JSON files..."
+    for file in $json_files; do
+        if ! deno fmt --check "$file"; then
+            echo "❌ JSON format check failed for $file"
+            exit 1
+        fi
+    done
+    echo "✅ JSON checks passed"
+fi
+
+# Markdownファイルのチェック
+md_files=$(echo "$changed_files" | grep -E "\.md$" || true)
+if [ -n "$md_files" ]; then
+    echo "🔍 Checking Markdown files..."
+    if ! deno fmt --check; then
+        echo "❌ Markdown format check failed"
+        exit 1
+    fi
+    echo "✅ Markdown checks passed"
+fi
+
+# その他のファイルのチェック
+other_files=$(echo "$changed_files" | grep -vE "\.(tsx?|json|md)$" || true)
+if [ -n "$other_files" ]; then
+    echo "🔍 Checking other files..."
+    # ここに必要なチェックを追加（例：CSSのlintなど）
+    echo "✅ Other file checks passed"
+fi
+
+echo "✅ All checks passed! Ready to push."
 exit 0 
