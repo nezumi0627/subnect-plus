@@ -23,7 +23,7 @@
     </tr>
     <tr>
       <td>Deno</td>
-      <td>1.38.5</td>
+      <td>2.1.4</td>
       <td>実行環境</td>
     </tr>
     <tr>
@@ -47,7 +47,7 @@
 
 <ul>
     <li>Node.js 18以上</li>
-    <li>Deno 1.38.5以上</li>
+    <li>Deno 2.1.4以上</li>
     <li>Chrome最新版</li>
   </ul>
 </div>
@@ -60,11 +60,11 @@
 
 <pre><code>subnect-plus/
 ├── src/
-│   ├── content/      # コンテンツスクリプト
-│   ├── background/   # バックグラウンドスクリプト
-│   └── types/        # 型定義
-├── icons/            # アイコンファイル
-├── styles/           # スタイルシート
+│   ├── content/     # コンテンツスクリプト
+│   ├── background/  # バックグラウンドスクリプト
+│   └── types/       # 型定義
+├── icons/           # アイコンファイル
+├── styles/          # スタイルシート
 └── docs/            # ドキュメント</code></pre>
 
 <div align="center">
