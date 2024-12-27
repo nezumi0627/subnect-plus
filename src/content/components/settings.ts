@@ -47,17 +47,26 @@ export class SettingsComponent {
     this.settingsLinkAdded = true;
   }
 
+  /**
+   * 設定画面をクリーンアップします
+   */
   cleanupSettings(): void {
-    if (globalThis.location.pathname !== '/settings') return;
-
-    const settingsContent = document.querySelector('#subnect-plus-settings-content');
-    const settingsMenu = DOMUtils.findSettingsMenu();
-
-    if (settingsContent) {
-      const container = DOMUtils.findSettingsContainer();
-      if (container && settingsMenu) {
-        container.replaceChildren(settingsMenu);
+    try {
+      // 設定画面を削除
+      const settingsContent = document.querySelector('#subnect-plus-settings-content');
+      if (settingsContent) {
+        settingsContent.remove();
       }
+
+      // Subnectメニューを再表示
+      const settingsMenu = DOMUtils.findSettingsMenu();
+      if (settingsMenu) {
+        settingsMenu.style.display = '';
+      }
+
+      this.setSettingsLinkAdded(false);
+    } catch (error) {
+      console.error('[Subnect+] Error cleaning up settings:', error);
     }
   }
 
@@ -65,6 +74,15 @@ export class SettingsComponent {
     const container = DOMUtils.findSettingsContainer();
     const settingsMenu = DOMUtils.findSettingsMenu();
     if (!container || !settingsMenu) return;
+
+    // 既存のSubnectメニューを非表示
+    settingsMenu.style.display = 'none';
+
+    // 既存の設定画面があれば削除
+    const existingContent = document.querySelector('#subnect-plus-settings-content');
+    if (existingContent) {
+      existingContent.remove();
+    }
 
     const settingsContent = document.createElement('div');
     settingsContent.id = 'subnect-plus-settings-content';
@@ -103,12 +121,32 @@ export class SettingsComponent {
     `;
 
     const backButton = settingsContent.querySelector('#subnect-plus-back');
-    backButton?.addEventListener('click', (e: Event) => {
-      e.preventDefault();
-      container.replaceChildren(settingsMenu);
-    });
+    if (backButton) {
+      const handleBack = (e: Event) => {
+        e.preventDefault();
+        e.stopPropagation();
+        backButton.removeEventListener('click', handleBack);
+        this.cleanupSettings();
+      };
+      backButton.addEventListener('click', handleBack);
+    }
 
-    container.replaceChildren(settingsContent);
+    // グローバルクリックイベントリスナーを設定
+    const handleGlobalClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (
+        !target.closest('#subnect-plus-settings-content') &&
+        !target.closest('#subnect-plus-settings') &&
+        (target.closest('a') || target.closest('button'))
+      ) {
+        document.removeEventListener('click', handleGlobalClick);
+        this.cleanupSettings();
+      }
+    };
+
+    // コンテンツを追加
+    container.appendChild(settingsContent);
+    document.addEventListener('click', handleGlobalClick);
     this.loadSettings();
   }
 
