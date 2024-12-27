@@ -13,13 +13,6 @@ export class DOMUtils {
     return null;
   }
 
-  static injectStyles(): void {
-    const style = document.createElement('link');
-    style.rel = 'stylesheet';
-    style.href = chrome.runtime.getURL('styles/main.css');
-    document.head.appendChild(style);
-  }
-
   static observeDOM(callback: () => void): void {
     const observer = new MutationObserver(callback);
     observer.observe(document.body, {

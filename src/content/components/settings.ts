@@ -7,121 +7,13 @@ export class SettingsComponent {
   private static instance: SettingsComponent;
   private settingsLinkAdded = false;
 
-  private constructor() {
-    this.injectStyles();
-  }
+  private constructor() {}
 
   static getInstance(): SettingsComponent {
     if (!SettingsComponent.instance) {
       SettingsComponent.instance = new SettingsComponent();
     }
     return SettingsComponent.instance;
-  }
-
-  private injectStyles(): void {
-    const style = document.createElement('style');
-    style.textContent = `
-      .subnect-plus-settings-link {
-        height: 60px;
-        padding: 5px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-radius: 5px;
-      }
-
-      .subnect-plus-settings-link:hover {
-        background-color: var(--hover-color);
-      }
-
-      .subnect-plus-settings-icon-container {
-        width: 25px;
-        height: 25px;
-        margin-right: 5px;
-      }
-
-      .subnect-plus-settings-icon {
-        width: 100%;
-        height: 100%;
-      }
-
-      .subnect-plus-settings-arrow {
-        width: 25px;
-        height: 25px;
-        margin: 12.5px;
-      }
-
-      .subnect-plus-settings-content {
-        max-width: 750px;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
-      }
-
-      .subnect-plus-settings-header {
-        height: 50px;
-        padding: 5px;
-        position: sticky;
-        top: 0;
-        display: flex;
-        background-color: var(--back-color);
-        border-bottom: 1px solid var(--border-color);
-        z-index: 20;
-      }
-
-      .subnect-plus-back-button {
-        width: 40px;
-        height: 40px;
-        display: flex;
-      }
-
-      .subnect-plus-back-icon {
-        width: 25px;
-        height: 25px;
-        margin: 7.5px;
-      }
-
-      .subnect-plus-settings-title {
-        padding: 5px;
-        margin: auto 0;
-        font-weight: bold;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-
-      .subnect-plus-settings-body {
-        padding: 5px;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .subnect-plus-settings-item {
-        height: 60px;
-        padding: 5px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-radius: 5px;
-      }
-
-      .subnect-plus-settings-item:hover {
-        background-color: var(--hover-color);
-      }
-
-      .subnect-plus-settings-label {
-        display: flex;
-        align-items: center;
-      }
-
-      .subnect-plus-settings-value {
-        display: flex;
-        align-items: center;
-        opacity: 0.7;
-      }
-    `;
-    document.head.appendChild(style);
   }
 
   addSettingsLink(): void {
@@ -249,15 +141,15 @@ export class SettingsComponent {
     this.loadSettings();
   }
 
-  private async loadSettings(): Promise<void> {
-    const settings = await StorageService.getSettings();
-    const changeLogo = document.getElementById('changeLogo') as HTMLInputElement;
+  private loadSettings(): void {
+    const changeLogo = document.querySelector<HTMLInputElement>('#changeLogo');
     if (changeLogo) {
-      changeLogo.checked = settings.changeLogo || false;
-      changeLogo.addEventListener('change', async (e: Event) => {
-        const target = e.target as HTMLInputElement;
-        await StorageService.setSettings({ changeLogo: target.checked });
-        LogoComponent.getInstance().changeLogo(target.checked);
+      StorageService.getInstance().get<boolean>('changeLogo').then((value) => {
+        changeLogo.checked = value ?? false;
+        changeLogo.addEventListener('change', () => {
+          StorageService.getInstance().set('changeLogo', changeLogo.checked);
+          LogoComponent.getInstance().changeLogo(changeLogo.checked);
+        });
       });
     }
   }

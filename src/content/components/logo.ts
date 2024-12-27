@@ -2,53 +2,13 @@ export class LogoComponent {
   private static instance: LogoComponent;
   private logoChanged = false;
 
-  private constructor() {
-    this.injectStyles();
-  }
+  private constructor() {}
 
   static getInstance(): LogoComponent {
     if (!LogoComponent.instance) {
       LogoComponent.instance = new LogoComponent();
     }
     return LogoComponent.instance;
-  }
-
-  private injectStyles(): void {
-    const style = document.createElement('style');
-    style.textContent = `
-      .subnect-plus-logo {
-        height: 50px;
-        padding: 5px;
-        position: sticky;
-        top: 0;
-        display: flex;
-        background-color: var(--back-color);
-        border-bottom: 1px solid var(--border-color);
-        z-index: 20;
-      }
-
-      .subnect-plus-logo-title {
-        padding-top: 2.5px;
-        margin: auto 0;
-        font-size: 24px;
-        font-weight: bold;
-        color: var(--font-color);
-      }
-
-      .subnect-plus-logo-title.plus {
-        color: var(--accent-color);
-      }
-
-      .subnect-plus-logo-icon {
-        height: 20px;
-        margin: 10px;
-      }
-
-      .subnect-plus-logo-icon.original {
-        color: var(--accent-color);
-      }
-    `;
-    document.head.appendChild(style);
   }
 
   changeLogo(enabled: boolean): void {
