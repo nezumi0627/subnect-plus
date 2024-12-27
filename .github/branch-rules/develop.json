@@ -19,10 +19,6 @@
       "parameters": {}
     },
     {
-      "type": "required_linear_history",
-      "parameters": {}
-    },
-    {
       "type": "pull_request",
       "parameters": {
         "required_approving_review_count": 1,
