@@ -71,8 +71,10 @@ deno task build
 
 ## コントリビュータ
 
-<div align="center">
-  <a href="https://github.com/nezumi0627/subnect-plus/graphs/contributors">
-    <img src=".github/assets/contributors.svg" alt="Contributors" width="600" />
-  </a>
-</div>
+<img src="https://github.com/MocA-Love.png?size=160">
+
+<style>
+  img {
+    border-radius: 50%;
+  }
+</style>

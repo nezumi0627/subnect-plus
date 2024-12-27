@@ -78,16 +78,14 @@
 
     <!-- First Contributor -->
     <g class="avatar-container">
-      <image x="160" y="60" width="80" height="80" clip-path="url(#avatar-clip-1)"
-             xlink:href="https://avatars.githubusercontent.com/MocA-Love?size=160"/>
+      <img src="https://avatars.githubusercontent.com/MocA-Love?size=160"/>
       <circle class="avatar-circle" cx="200" cy="100" r="40"/>
     </g>
     <text class="text username" x="200" y="160" text-anchor="middle">@MocA-Love</text>
 
     <!-- Second Contributor -->
     <g class="avatar-container">
-      <image x="360" y="60" width="80" height="80" clip-path="url(#avatar-clip-2)"
-             xlink:href="https://avatars.githubusercontent.com/akku1139?size=160"/>
+      <img src="https://avatars.githubusercontent.com/akku1139?size=160"/>
       <circle class="avatar-circle" cx="400" cy="100" r="40"/>
     </g>
     <text class="text username" x="400" y="160" text-anchor="middle">@akku1139</text>
