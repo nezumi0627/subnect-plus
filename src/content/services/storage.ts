@@ -2,9 +2,20 @@ import { Settings } from '../../types/settings.ts';
 
 export class StorageService {
   static async getSettings(): Promise<Settings> {
-    const result = await chrome.storage.sync.get(['changeLogo']) as { changeLogo?: boolean };
+    const result = await chrome.storage.sync.get([
+      'changeLogo',
+      'discordWebhookUrl',
+      'enableDiscordNotification',
+    ]) as {
+      changeLogo?: boolean;
+      discordWebhookUrl?: string;
+      enableDiscordNotification?: boolean;
+    };
+
     return {
       changeLogo: result.changeLogo ?? false,
+      discordWebhookUrl: result.discordWebhookUrl ?? '',
+      enableDiscordNotification: result.enableDiscordNotification ?? false,
     };
   }
 
