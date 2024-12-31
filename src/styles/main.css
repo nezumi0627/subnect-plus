@@ -1,3 +1,11 @@
+:root {
+  --hover-color: rgba(128, 128, 128, 0.1);
+  --border-color: rgba(128, 128, 128, 0.2);
+  --accent-color: #2563eb;
+  --back-color: #ffffff;
+  --font-color: #000000;
+}
+
 .toggle {
   appearance: none;
   width: 40px;

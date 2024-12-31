@@ -16,7 +16,6 @@ class SubnectPlus {
 
   private async init(): Promise<void> {
     try {
-      DOMUtils.injectStyles();
       this.setupEventListeners();
       this.observeDOM();
       await this.loadAndApplySettings();
@@ -63,8 +62,8 @@ class SubnectPlus {
   }
 
   private async loadAndApplySettings(): Promise<void> {
-    const settings = await StorageService.getSettings();
-    if (settings.changeLogo) {
+    const changeLogo = await StorageService.getInstance().get<boolean>('changeLogo');
+    if (changeLogo) {
       this.logo.changeLogo(true);
     }
   }
@@ -81,8 +80,8 @@ class SubnectPlus {
     DOMUtils.observeDOM(async () => {
       const logoLink = document.querySelector<HTMLAnchorElement>('a[href="/home"]');
       if (logoLink && !this.logo.isLogoChanged()) {
-        const settings = await StorageService.getSettings();
-        if (settings.changeLogo) {
+        const changeLogo = await StorageService.getInstance().get<boolean>('changeLogo');
+        if (changeLogo) {
           this.logo.changeLogo(true);
         }
       }
