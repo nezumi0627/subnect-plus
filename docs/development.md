@@ -46,8 +46,8 @@
   <p>開発には以下の環境が必要です：</p>
 
 <ul>
-    <li>Node.js 18以上</li>
-    <li>Deno 1.38.5以上</li>
+    <li>Node.js 20以上</li>
+    <li>Deno 2.1.4以上</li>
     <li>Chrome最新版</li>
   </ul>
 </div>
