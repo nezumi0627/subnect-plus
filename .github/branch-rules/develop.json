@@ -15,10 +15,12 @@
   },
   "rules": [
     {
-      "type": "deletion"
+      "type": "deletion",
+      "parameters": {}
     },
     {
-      "type": "required_linear_history"
+      "type": "required_linear_history",
+      "parameters": {}
     },
     {
       "type": "pull_request",
@@ -37,10 +39,6 @@
       "parameters": {
         "strict_required_status_checks_policy": true,
         "required_status_checks": [
-          {
-            "context": "build",
-            "integration_id": null
-          },
           {
             "context": "lint",
             "integration_id": null

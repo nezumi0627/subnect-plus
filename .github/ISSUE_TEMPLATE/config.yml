@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 🤝 コントリビューションガイド
+    url: https://github.com/nezumi0627/subnect-plus/blob/main/.github/CONTRIBUTING.md
+    about: プロジェクトへの貢献方法について
+  - name: 🔒 セキュリティポリシー
+    url: https://github.com/nezumi0627/subnect-plus/blob/main/.github/SECURITY.md
+    about: セキュリティ関連の報告について
+  - name: 💬 Discussions
+    url: https://github.com/nezumi0627/subnect-plus/discussions
+    about: 一般的な質問や議論はこちら

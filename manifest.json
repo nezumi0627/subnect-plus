@@ -14,7 +14,11 @@
     {
       "matches": ["https://subnect.com/*"],
       "js": ["content/main.js"],
-      "css": ["styles/main.css"]
+      "css": [
+        "styles/main.css",
+        "styles/components/logo.css",
+        "styles/components/settings.css"
+      ]
     }
   ],
   "background": {

@@ -20,7 +20,7 @@
     </a>
     &nbsp;
     <a href="https://deno.land">
-      <img src="https://img.shields.io/badge/deno-1.38.5-informational.svg" alt="Deno: 1.38.5">
+      <img src="https://img.shields.io/badge/deno-2.1.4-informational.svg" alt="Deno: 2.1.4">
     </a>
     &nbsp;
     <a href="https://www.typescriptlang.org/">
@@ -68,11 +68,3 @@ deno task build
 ## ライセンス
 
 このプロジェクトは[MIT License](LICENSE)の下で公開されています。
-
-## コントリビュータ
-
-<div align="center">
-  <a href="https://github.com/nezumi0627/subnect-plus/graphs/contributors">
-    <img src=".github/assets/contributors.svg" alt="Contributors" width="600" />
-  </a>
-</div>
